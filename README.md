@@ -13,8 +13,7 @@ Future<String?> getFileChecksum(String filePath) async {
   try {
     final stream = file.openRead();
     final hash = await md5.bind(stream).first;
-    // NOTE: You might not need to convert it to base64
-    return base64.encode(hash.bytes);
+    return hash.toString();
   } catch (exception) {
     return null;
   }
